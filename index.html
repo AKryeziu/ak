@@ -118,14 +118,322 @@
     }
   </style>
   <style>
+    /* --- Cinematic Gallery (No JS) --- */
+
+    #luxury-gallery {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 50;
+    }
+
+    #luxury-gallery:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .gallery-content {
+      max-width: 1100px;
+      width: 100%;
+      transform: scale(0.95);
+      opacity: 0;
+      transition: all 0.7s ease;
+    }
+
+    #luxury-gallery:target .gallery-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-img {
+      width: 100%;
+      object-fit: cover;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+
+    /* Stagger animation */
+    #luxury-gallery:target .gallery-img:nth-child(1) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #luxury-gallery:target .gallery-img:nth-child(2) {
+      transition-delay: 0.35s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #luxury-gallery:target .gallery-img:nth-child(3) {
+      transition-delay: 0.5s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #luxury-gallery:target .gallery-img:nth-child(4) {
+      transition-delay: 0.65s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-close {
+      position: absolute;
+      top: -3rem;
+      right: 0;
+      font-size: 2rem;
+      color: white;
+      text-decoration: none;
+    }
+  </style>
+  <style>
+    #performance-gallery {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 50;
+    }
+
+    #performance-gallery:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #performance-gallery:target .gallery-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    #performance-gallery:target .gallery-img:nth-child(1) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #performance-gallery:target .gallery-img:nth-child(2) {
+      transition-delay: 0.35s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #performance-gallery:target .gallery-img:nth-child(3) {
+      transition-delay: 0.5s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #performance-gallery:target .gallery-img:nth-child(4) {
+      transition-delay: 0.65s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <style>
+    /* Cinematic Gallery */
+    .gallery-img {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.9s ease;
+    }
+
+    .gallery-img.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #gallery-overlay {
+      transition: opacity 0.7s ease;
+    }
+
+    #gallery-content {
+      transition: all 0.7s ease;
+    }
+
     body {
       box-sizing: border-box;
     }
   </style>
+  <style>
+    #heritage-gallery {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 50;
+    }
+
+    #heritage-gallery:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #heritage-gallery:target .gallery-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    #heritage-gallery:target .gallery-img:nth-child(1) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #heritage-gallery:target .gallery-img:nth-child(2) {
+      transition-delay: 0.35s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #heritage-gallery:target .gallery-img:nth-child(3) {
+      transition-delay: 0.5s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #heritage-gallery:target .gallery-img:nth-child(4) {
+      transition-delay: 0.65s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  <style>
+    #electric-gallery {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.6s ease;
+      z-index: 50;
+    }
+
+    #electric-gallery:target {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #electric-gallery:target .gallery-content {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    /* Only two stagger animations */
+
+    #electric-gallery:target .gallery-img:nth-child(1) {
+      transition-delay: 0.2s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    #electric-gallery:target .gallery-img:nth-child(2) {
+      transition-delay: 0.4s;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
 </head>
+<!-- Cinematic Luxury Gallery (CSS Only) -->
+<div id="luxury-gallery">
+  <div class="gallery-content relative">
 
-<body class="h-full bg-beige text-charcoal font-sans">
+    <a href="#automotive-portfolio" class="gallery-close">✕</a>
+
+
+    <div class="gallery-grid">
+      <img src="IMG_9408.JPG" class="gallery-img">
+      <img src="IMG_9406.JPG" class="gallery-img">
+      <img src="IMG_9412.JPG" class="gallery-img">
+      <img src="IMG_9415.JPG" class="gallery-img">
+    </div>
+
+  </div>
+</div>
+
+<!-- Performance Series Gallery (CSS Only) -->
+<div id="performance-gallery">
+  <div class="gallery-content relative">
+
+    <a href="#automotive-portfolio" class="gallery-close">✕</a>
+
+
+    <div class="gallery-grid">
+      <img src="IMG_9426.JPG" class="gallery-img">
+      <img src="IMG_9427.JPG" class="gallery-img">
+      <img src="IMG_9430.JPG" class="gallery-img">
+      <img src="IMG_9429.JPG" class="gallery-img">
+    </div>
+
+  </div>
+</div>
+<!-- Heritage Collection Gallery (CSS Only) -->
+<div id="heritage-gallery">
+  <div class="gallery-content relative">
+
+    <a href="#automotive-portfolio" class="gallery-close">✕</a>
+
+
+    <div class="gallery-grid">
+      <img src="DSC_4157.JPG" class="gallery-img">
+      <img src="IMG_9433.JPG" class="gallery-img">
+      <img src="IMG_9434.JPG" class="gallery-img">
+      <img src="IMG_9437.JPG" class="gallery-img">
+    </div>
+
+  </div>
+</div>
+<!-- Electric Future Gallery (CSS Only - 2 Images) -->
+<div id="electric-gallery">
+  <div class="gallery-content relative">
+
+    <a href="#automotive-portfolio" class="gallery-close">✕</a>
+
+    <div class="gallery-grid">
+      <img src="1 copy.png" class="gallery-img">
+      <img src="2 copy.png" class="gallery-img">
+    </div>
+
+  </div>
+</div>
+
+
+
+<body class=" h-full bg-beige text-charcoal font-sans">
   <div id="app-wrapper" class="w-full h-full overflow-auto">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-beige/95 backdrop-blur-sm">
@@ -179,7 +487,7 @@
                 </svg></a>
             </div>
           </div>
-          <img src="akrz.png" alt="">
+          <img src="ak.png" alt="">
         </div>
       </div>
   </div>
@@ -218,106 +526,126 @@
     </div>
   </section><!-- Portfolio Section -->
   <section id="portfolio" class="py-32">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12">
-      <div class="text-center mb-20">
-        <p class="text-bronze text-sm tracking-[0.3em] uppercase mb-4">Selected Work</p>
-        <h2 class="font-serif text-4xl lg:text-5xl font-light">Portfolio</h2>
-      </div><!-- Portfolio Tabs -->
-      <div class="flex justify-center gap-8 mb-16"><button
-          class="portfolio-tab active text-sm tracking-widest uppercase pb-2 border-b-2 border-charcoal"
-          data-tab="automotive">Automotive</button> <button
-          class="portfolio-tab text-sm tracking-widest uppercase pb-2 border-b-2 border-transparent text-charcoal-light hover:text-charcoal transition-colors"
-          data-tab="shortform">Short-Form Content</button>
-      </div><!-- Automotive Portfolio -->
-      <div id="automotive-portfolio" class="portfolio-content">
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="portfolio-item group cursor-pointer">
-            <div class="aspect-[4/3] bg-gradient-to-br from-charcoal/5 to-charcoal/20 relative overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="w-20 h-20 text-bronze/40" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1">
-                  <rect x="2" y="6" width="20" height="12" rx="2" />
-                  <circle cx="7" cy="18" r="2" />
-                  <circle cx="17" cy="18" r="2" />
-                  <path d="M5 10h14" />
-                </svg>
+    <div id="automotive" class="portfolio-content">
+
+      <div class="max-w-7xl mx-auto px-6 lg:px-12">
+        <div class="text-center mb-20">
+          <p class="text-bronze text-sm tracking-[0.3em] uppercase mb-4">Selected Work</p>
+          <h2 class="font-serif text-4xl lg:text-5xl font-light">Portfolio</h2>
+        </div><!-- Portfolio Tabs -->
+        <div class="flex justify-center gap-8 mb-16"><button
+            class="portfolio-tab active text-sm tracking-widest uppercase pb-2 border-b-2 border-charcoal"
+            data-tab="automotive">Automotive</button> <button
+            class="portfolio-tab text-sm tracking-widest uppercase pb-2 border-b-2 border-transparent text-charcoal-light hover:text-charcoal transition-colors"
+            data-tab="shortform">Short-Form Content</button>
+        </div><!-- Automotive Portfolio -->
+        <div id="automotive-portfolio" class="portfolio-content">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="portfolio-item group cursor-pointer">
+              <div class="portfolio-item group cursor-pointer" onclick="openLuxuryGallery()">
+                <div class="portfolio-item group cursor-pointer">
+                  <a href="#luxury-gallery" class="block">
+                    <div class="aspect-[4/3] relative overflow-hidden">
+
+                      <img src="IMG_9408.JPG" alt="Range Rover Campaign"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                      <div
+                        class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
+                        <span
+                          class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">
+                          View Project
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="mt-6">
+                      <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">
+                        Range Rover Sport
+                      </p>
+                    </div>
+                  </a>
+                </div>
+
+
               </div>
-              <div
-                class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
-                <span
-                  class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">View
-                  Project</span>
-              </div>
+
+
             </div>
-            <div class="mt-6">
-              <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">Luxury SUV Campaign</p>
-              <h3 class="font-serif text-2xl">Range Rover Collaboration</h3>
+            <div class="portfolio-item group cursor-pointer">
+              <div class="portfolio-item group cursor-pointer">
+                <a href="#performance-gallery" class="block">
+                  <div class="aspect-[4/3] relative overflow-hidden">
+
+                    <img src="IMG_9426.JPG" alt="Performance Series Campaign"
+                      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                    <div
+                      class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
+                      <span
+                        class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">
+                        View Project
+                      </span>
+                    </div>
+                  </div>
+
+                  <div class="mt-6">
+                    <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">
+                      Discovery
+                    </p>
+                  </div>
+                </a>
+              </div>
+
+            </div>
+            <div class="portfolio-item group cursor-pointer">
+              <a href="#heritage-gallery" class="block">
+                <div class="aspect-[4/3] relative overflow-hidden">
+
+                  <img src="DSC_4157.JPG" alt="Heritage Collection Campaign"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                  <div
+                    class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
+                    <span
+                      class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">
+                      View Project
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mt-6">
+                  <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">
+                    ILLYRIAN TSX
+                  </p>
+                </div>
+              </a>
+            </div>
+            <div class="portfolio-item group cursor-pointer">
+              <a href="#electric-gallery" class="block">
+                <div class="aspect-[4/3] relative overflow-hidden">
+
+                  <img src="1 copy.png" alt="Electric Future Campaign"
+                    class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+
+                  <div
+                    class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
+                    <span
+                      class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">
+                      View Project
+                    </span>
+                  </div>
+                </div>
+
+                <div class="mt-6">
+                  <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">
+                    Folders
+                  </p>
+                </div>
+              </a>
             </div>
           </div>
-          <div class="portfolio-item group cursor-pointer">
-            <div class="aspect-[4/3] bg-gradient-to-br from-bronze/5 to-bronze/20 relative overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="w-20 h-20 text-charcoal/30" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1">
-                  <path d="M12 2L2 7l10 5 10-5-10-5z" />
-                  <path d="M2 17l10 5 10-5" />
-                  <path d="M2 12l10 5 10-5" />
-                </svg>
-              </div>
-              <div
-                class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
-                <span
-                  class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">View
-                  Project</span>
-              </div>
-            </div>
-            <div class="mt-6">
-              <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">Performance Series</p>
-              <h3 class="font-serif text-2xl">Performance</h3>
-            </div>
-          </div>
-          <div class="portfolio-item group cursor-pointer">
-            <div class="aspect-[4/3] bg-gradient-to-br from-beige-dark to-charcoal/10 relative overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="w-20 h-20 text-bronze/40" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-              </div>
-              <div
-                class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
-                <span
-                  class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">View
-                  Project</span>
-              </div>
-            </div>
-            <div class="mt-6">
-              <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">Heritage Collection</p>
-              <h3 class="font-serif text-2xl">Classic</h3>
-            </div>
-          </div>
-          <div class="portfolio-item group cursor-pointer">
-            <div class="aspect-[4/3] bg-gradient-to-br from-charcoal/10 to-bronze/10 relative overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center">
-                <svg class="w-20 h-20 text-charcoal/30" viewbox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="1">
-                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" />
-                  <line x1="4" y1="22" x2="4" y2="15" />
-                </svg>
-              </div>
-              <div
-                class="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/80 transition-all duration-500 flex items-center justify-center">
-                <span
-                  class="text-cream opacity-0 group-hover:opacity-100 transition-opacity duration-500 text-sm tracking-widest uppercase">View
-                  Project</span>
-              </div>
-            </div>
-            <div class="mt-6">
-              <p class="text-bronze text-xs tracking-[0.2em] uppercase mb-2">Electric Future</p>
-              <h3 class="font-serif text-2xl">EV</h3>
-            </div>
-          </div>
+
         </div>
       </div><!-- Short-Form Portfolio -->
       <div id="shortform-portfolio" class="portfolio-content hidden">
